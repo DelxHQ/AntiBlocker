@@ -1,0 +1,15 @@
+name: AntiBlocker
+main: ankitmaharjan252\AntiBlocker\Main
+version: 1.0.0
+api: 1.13.1
+author: ankitmaharjan252
+
+commands:
+ antiblocker:
+  description: Allow op to block words
+  permission: antiblocker.command.antiblocker
+ 
+permissions:
+ antiblocker.command.antiblocker:
+  description: Allow op to block words
+  default: op
