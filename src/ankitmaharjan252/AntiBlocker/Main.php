@@ -23,7 +23,8 @@ class Main extends PluginBase implements Listener{
 				if(isset($args[0])){
 					if(strtolower($args[0]) == "block"){
 							if(isset($args[1])){
-								$words = $args[1];
+								$words = $this->getConfig()->get("words", []);
+								$words[] = $args[1];
 								$this->getConfig()->set("words", $words);
 								$sender->sendMessage($this->prifex .$args[1]." has been added to blocking list");
 							} else {
@@ -45,6 +46,8 @@ class Main extends PluginBase implements Listener{
 		$search = strpos($msg, $words);
 		if($search === true){
 			$p->sendMessage($this->prifex . Color::RED . "That word is blocked in this server");
+		} else {
+			$e->setMessage($msg);
 		}
 	}
 	public function onDisable(){
