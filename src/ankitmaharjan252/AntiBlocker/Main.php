@@ -26,6 +26,7 @@ class Main extends PluginBase implements Listener{
 								$words = $this->getConfig()->get("words", []);
 								$words[] = $args[1];
 								$this->getConfig()->set("words", $words);
+								$this->saveConfig();
 								$sender->sendMessage($this->prifex .$args[1]." has been added to blocking list");
 							} else {
 								$sender->sendMessage(Color::RED . "Usage: /antiblocker <add> <word>");
@@ -42,8 +43,8 @@ class Main extends PluginBase implements Listener{
 	public function onChat(PlayerChatEvent $e){
 		$p = $e->getPlayer();
 		$msg = $e->getMessage();
-		$words = $this->getConfig()->get("words"); // Problem here, how to add array on strpos
-		$search = strpos($msg, $words);
+		$words = $this->getConfig()->get("words");
+		$search = strpos($msg, $words); // Error RuntimeException: "strpos(): needle is not a string or an integer" (E_WARNING)
 		if($search === true){
 			$p->sendMessage($this->prifex . Color::RED . " That word is blocked in this server");
 		} else {
