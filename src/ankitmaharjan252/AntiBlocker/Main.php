@@ -42,7 +42,7 @@ class Main extends PluginBase implements Listener{
 	public function onChat(PlayerChatEvent $e){
 		$p = $e->getPlayer();
 		$msg = $e->getMessage();
-		$words = $this->getConfig()->get("words");
+		$words = $this->getConfig()->get("words"); // Problem here, how to add array on strpos
 		$search = strpos($msg, $words);
 		if($search === true){
 			$p->sendMessage($this->prifex . Color::RED . " That word is blocked in this server");
