@@ -21,20 +21,20 @@ class Main extends PluginBase implements Listener{
 		if(strtolower($cmd->getName()) == "antiblocker"){
 			if($sender->hasPermission("antiblocker.command.antiblocker")){
 				if(isset($args[0])){
-					if(strtolower($args[0]) == "block"){
+					if(strtolower($args[0]) == "add"){
 							if(isset($args[1])){
 								$words = $this->getConfig()->get("words", []);
 								$words[] = $args[1];
 								$this->getConfig()->set("words", $words);
 								$sender->sendMessage($this->prifex .$args[1]." has been added to blocking list");
 							} else {
-								$sender->sendMessage(Color::RED . "Usage: /antiblocker <block> <word>");
+								$sender->sendMessage(Color::RED . "Usage: /antiblocker <add> <word>");
 							}	
 						} else {
-							$sender->sendMessage(Color::RED . "Usage: /antiblocker <block> <word>");
+							$sender->sendMessage(Color::RED . "Usage: /antiblocker <add> <word>");
 						}
 				} else {
-					$sender->sendMessage(Color::RED . "Usage: /antiblocker <block> <word>");
+					$sender->sendMessage(Color::RED . "Usage: /antiblocker <add> <word>");
 				}
 			}
 		}
@@ -45,7 +45,7 @@ class Main extends PluginBase implements Listener{
 		$words = $this->getConfig()->get("words");
 		$search = strpos($msg, $words);
 		if($search === true){
-			$p->sendMessage($this->prifex . Color::RED . "That word is blocked in this server");
+			$p->sendMessage($this->prifex . Color::RED . " That word is blocked in this server");
 		} else {
 			$e->setMessage($msg);
 		}
