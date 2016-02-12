@@ -1,3 +1,12 @@
 ---
+####
+# Main AntiBlocker config
+####
 words:
+
+####
+# Replace is what will get replace, when a player tried to send a block word
+####
+replace: ****
+
 ...
