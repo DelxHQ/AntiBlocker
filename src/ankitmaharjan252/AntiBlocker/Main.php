@@ -40,15 +40,13 @@ class Main extends PluginBase implements Listener{
 			}
 		}
 	}
-	public function onChat(PlayerChatEvent $e){
-		$p = $e->getPlayer();
-		$msg = $e->getMessage();
-		$words = $this->getConfig()->get("words");
-		$search = strpos($msg, $words); // Error RuntimeException: "strpos(): needle is not a string or an integer" (E_WARNING)
-		if($search === true){
-			$p->sendMessage($this->prifex . Color::RED . " That word is blocked in this server");
-		} else {
-			$e->setMessage($msg);
+ public function onPlayerChat(PlayerChatEvent $event){
+    $player = $event->getPlayer();
+    $message = $event->getMessage();
+    foreach($this->words->get("words") as $word => $replace){
+      if($player->hasPermission("antiblocker.bypass") !== true){
+        $message = str_ireplace($word, $replace, $message);
+        $player->sendMessage("Blocker> That word is blocked")
 		}
 	}
 	public function onDisable(){
