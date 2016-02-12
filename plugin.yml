@@ -13,3 +13,6 @@ permissions:
  antiblocker.command.antiblocker:
   description: Allow op to block words
   default: op
+  antiblocker.bypass:
+  description: Allows players to bypass words blocking
+  default: op
