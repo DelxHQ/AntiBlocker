@@ -13,9 +13,10 @@ class Main extends PluginBase implements Listener{
 	private $prifex = Color::WHITE . "[" . Color::YELLOW . "Anti" . Color::RED . "Blocker" . Color::WHITE . "] ";
 	public function onEnable(){
 		$this->saveDefaultConfig();
-		$this->config = (new Config($this->getDataFolder() . "config.yml", Config::YAML))->getAll();
+		$this->words = (new Config($this->getDataFolder() . "config.yml", Config::YAML))->getAll();
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		$this->getLogger()->info("AntiBlocker has been enabled");
+		
 	}
 	public function onCommand(CommandSender $sender, Command $cmd, $label, array $args){
 		if(strtolower($cmd->getName()) == "antiblocker"){
@@ -46,7 +47,7 @@ class Main extends PluginBase implements Listener{
     foreach($this->words->get("words") as $word => $replace){
       if($player->hasPermission("antiblocker.bypass") !== true){
         $message = str_ireplace($word, $replace, $message);
-        $player->sendMessage($this->prifex . "$replace")
+        $player->sendMessage("Blocker> $replace")
 		}
 	}
 	public function onDisable(){
