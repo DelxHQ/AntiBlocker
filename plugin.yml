@@ -2,7 +2,7 @@ name: AntiBlocker
 main: ankitmaharjan252\AntiBlocker\Main
 version: 1.0.0
 api: 1.13.1
-author: ankitmaharjan252
+authors: [ankitmaharjan252, AndreTheGamer]
 
 commands:
  antiblocker:
