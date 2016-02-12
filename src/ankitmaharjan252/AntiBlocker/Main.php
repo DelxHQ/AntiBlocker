@@ -46,7 +46,7 @@ class Main extends PluginBase implements Listener{
     foreach($this->words->get("words") as $word => $replace){
       if($player->hasPermission("antiblocker.bypass") !== true){
         $message = str_ireplace($word, $replace, $message);
-        $player->sendMessage("Blocker> That word is blocked")
+        $player->sendMessage("Blocker> $replace")
 		}
 	}
 	public function onDisable(){
