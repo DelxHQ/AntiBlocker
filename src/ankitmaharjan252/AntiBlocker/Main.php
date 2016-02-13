@@ -50,6 +50,7 @@ class Main extends PluginBase implements Listener{
         $player->sendMessage($this->prifex . "$replace");
 		}
 	}
+ }
 	public function onDisable(){
 		$this->saveConfig();
 		$this->getLogger()->info("AntiBlocker has been disabled");
