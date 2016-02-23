@@ -5,7 +5,7 @@
 words:
 
 ####
-# Replace is what will get replace, when a player tried to send a block word
+# Replaces what ever the player typed and replaces it with the selected word.
 ####
 replace: ****
 
